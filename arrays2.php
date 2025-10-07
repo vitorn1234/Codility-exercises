@@ -13,8 +13,8 @@ function solution( array $A) : int {
             $i++;
         }
     }
-//
-//    return -1;
+
+    return -1;
 }
 
 print_r (solution([1,1,2,2,3,4,3,4,6])); // [9, 7, 6, 3, 8]

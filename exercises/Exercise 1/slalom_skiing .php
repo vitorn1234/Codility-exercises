@@ -33,34 +33,33 @@ function solution($A) {
         }
     }
 
-print_r($leftInc);
     // Compute the increasing sequence lengths from the start
-//    for ($i = 1; $i < $N; $i++) {
-//        if ($A[$i] > $A[$i - 1]) {
-//            $leftInc[$i] = $leftInc[$i - 1] + 1;
-//        }
-//    }
-//    // Compute the decreasing sequence lengths from the end
-//    for ($i = $N - 2; $i >= 0; $i--) {
-//        if ($A[$i] > $A[$i + 1]) {
-//            $rightDec[$i] = $rightDec[$i + 1] + 1;
-//        }
-//    }
-//
-//    // To handle the case of no change, we also compute max sequence lengths purely increasing or decreasing
-//    $maxSeq = 1;
-//    for ($i = 0; $i < $N; $i++) {
-//        $maxSeq = max($maxSeq, $leftInc[$i], $rightDec[$i]);
-//    }
-//
-//    // Now, combine sequences to allow for at most two direction changes:
-//    // We try all possible split points:
-//    $maxGates = 1;
-//    for ($i = 0; $i < $N; $i++) {
-//        // Combine increasing sequence ending at i and decreasing sequence starting at i
-//        $maxGates = max($maxGates, $leftInc[$i] + $rightDec[$i] - 1);
-//    }
-//    return $maxGates;
+    for ($i = 1; $i < $N; $i++) {
+        if ($A[$i] > $A[$i - 1]) {
+            $leftInc[$i] = $leftInc[$i - 1] + 1;
+        }
+    }
+    // Compute the decreasing sequence lengths from the end
+    for ($i = $N - 2; $i >= 0; $i--) {
+        if ($A[$i] > $A[$i + 1]) {
+            $rightDec[$i] = $rightDec[$i + 1] + 1;
+        }
+    }
+
+    // To handle the case of no change, we also compute max sequence lengths purely increasing or decreasing
+    $maxSeq = 1;
+    for ($i = 0; $i < $N; $i++) {
+        $maxSeq = max($maxSeq, $leftInc[$i], $rightDec[$i]);
+    }
+
+    // Now, combine sequences to allow for at most two direction changes:
+    // We try all possible split points:
+    $maxGates = 1;
+    for ($i = 0; $i < $N; $i++) {
+        // Combine increasing sequence ending at i and decreasing sequence starting at i
+        $maxGates = max($maxGates, $leftInc[$i] + $rightDec[$i] - 1);
+    }
+    return $maxGates;
 }
 
 echo solution([15,13,5,7,4,10,12]);

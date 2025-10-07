@@ -7,7 +7,8 @@ function solution(array $A): int
     if ($unique != $A) return 0;
     $count = count($A);
     rsort($A);
-    return $count == $A[0] ? 1 : 0;
+
+//    $count = $A[0] ? 1 : 0;
     // both work
     $N = count($A);
     $seen = array_fill(1, $N, false); // Track presence of each number from 1..N
